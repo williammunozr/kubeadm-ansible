@@ -15,7 +15,7 @@ kubeadm_opts: ""
 
 service_cidr: "10.96.0.0/12"
 pod_network_cidr: "10.244.0.0/16"
-apiserver_ip: "192.168.20.120"
+apiserver_ip: "192.168.21.120"
 
 # Network implementation('flannel', 'calico', 'canal', 'weave')
 network: calico

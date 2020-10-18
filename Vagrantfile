@@ -32,7 +32,7 @@ Vagrant.configure("2") do |config|
 
     config.vm.define "k8s-#{name}#{id}" do |n|
       n.vm.hostname = "k8s-#{name}#{id}"
-      ip_addr = "192.168.20.#{private_count}"
+      ip_addr = "192.168.21.#{private_count}"
       n.vm.network :private_network, ip: "#{ip_addr}",  auto_config: true
 
       n.vm.provider :virtualbox do |vb, override|
