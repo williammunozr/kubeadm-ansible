@@ -1,0 +1,14 @@
+---
+- name: "Check {{ network }} daemonset is working"
+  shell: kubectl --kubeconfig={{ kubeadmin_config }} get ds --all-namespaces | grep {{ network }}
+  delegate_to: "{{ groups['master'][0] }}"
+  run_once: true
+  register: check_net
+  ignore_errors: true
+  changed_when: false
+
+- name: "Create {{ network }} network daemonset"
+  when: check_net is failed
+  command: kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=Q2xpZW50IFZlcnNpb246IHZlcnNpb24uSW5mb3tNYWpvcjoiMSIsIE1pbm9yOiIxOSIsIEdpdFZlcnNpb246InYxLjE5LjAiLCBHaXRDb21taXQ6ImUxOTk2NDE4MzM3N2QwZWMyMDUyZDFmMWZhOTMwYzRkNzU3NWJkNTAiLCBHaXRUcmVlU3RhdGU6ImNsZWFuIiwgQnVpbGREYXRlOiIyMDIwLTA4LTI2VDE0OjMwOjMzWiIsIEdvVmVyc2lvbjoiZ28xLjE1IiwgQ29tcGlsZXI6ImdjIiwgUGxhdGZvcm06ImxpbnV4L2FtZDY0In0KU2VydmVyIFZlcnNpb246IHZlcnNpb24uSW5mb3tNYWpvcjoiMSIsIE1pbm9yOiIxOSIsIEdpdFZlcnNpb246InYxLjE5LjAiLCBHaXRDb21taXQ6ImUxOTk2NDE4MzM3N2QwZWMyMDUyZDFmMWZhOTMwYzRkNzU3NWJkNTAiLCBHaXRUcmVlU3RhdGU6ImNsZWFuIiwgQnVpbGREYXRlOiIyMDIwLTA4LTI2VDE0OjIzOjA0WiIsIEdvVmVyc2lvbjoiZ28xLjE1IiwgQ29tcGlsZXI6ImdjIiwgUGxhdGZvcm06ImxpbnV4L2FtZDY0In0K"
+  delegate_to: "{{ groups['master'][0] }}"
+  run_once: true
