@@ -37,7 +37,7 @@ if [ ${HOST_NAME} == "k8s-m1" ]; then
   esac
 
   yes "/root/.ssh/id_rsa" | sudo ssh-keygen -t rsa -N ""
-  HOSTS="192.16.35.10 192.16.35.11 192.16.35.12"
+  HOSTS="192.168.20.100 192.168.20.110 192.168.20.120"
   for host in ${HOSTS}; do
     sudo sshpass -p "vagrant" ssh -o StrictHostKeyChecking=no vagrant@${host} "sudo mkdir -p /root/.ssh"
     sudo cat /root/.ssh/id_rsa.pub | \
