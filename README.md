@@ -11,7 +11,6 @@ Updated to:
   - kube_version v1.19.0
   - latest Docker version
   - Calico
-  - Adding --upload-certs to master init
 
 System requirements:
 

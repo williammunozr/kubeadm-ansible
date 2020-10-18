@@ -9,8 +9,8 @@ cat <<EOF > ~/hosts
 127.0.0.1   localhost
 ::1         localhost
 
-192.168.20.100 k8s-n1
-192.168.20.110 k8s-n2
+192.168.20.118 k8s-n1
+192.168.20.119 k8s-n2
 192.168.20.120 k8s-m1
 
 EOF
@@ -37,7 +37,7 @@ if [ ${HOST_NAME} == "k8s-m1" ]; then
   esac
 
   yes "/root/.ssh/id_rsa" | sudo ssh-keygen -t rsa -N ""
-  HOSTS="192.168.20.100 192.168.20.110 192.168.20.120"
+  HOSTS="192.168.20.118 192.168.20.119 192.168.20.120"
   for host in ${HOSTS}; do
     sudo sshpass -p "vagrant" ssh -o StrictHostKeyChecking=no vagrant@${host} "sudo mkdir -p /root/.ssh"
     sudo cat /root/.ssh/id_rsa.pub | \
