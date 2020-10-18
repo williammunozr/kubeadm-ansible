@@ -11,7 +11,7 @@
   shell: |
     kubeadm join --token {{ token }} \
                 --discovery-token-unsafe-skip-ca-verification \
-                192.16.35.12:6443
+                {{ apiserver_ip }}:6443
   register: join_cluster
   notify:
     - Recreate kube-dns

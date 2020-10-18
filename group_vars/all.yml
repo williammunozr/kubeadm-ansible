@@ -14,7 +14,8 @@ kubeadm_opts: ""
 # kubeadm_opts: '--apiserver-cert-extra-sans "k8s.domain.com,kubernetes.domain.com"'
 
 service_cidr: "10.96.0.0/12"
-pod_network_cidr: "192.168.0.0/16"
+pod_network_cidr: "10.244.0.0/16"
+apiserver_ip: "192.168.20.120"
 
 # Network implementation('flannel', 'calico', 'canal', 'weave')
 network: calico
@@ -37,7 +38,7 @@ kube_addon_dir: /etc/kubernetes/addon
 
 # Additional feature to install
 additional_features:
-  helm: true
+  helm: false
   metallb: true
   healthcheck: true
 

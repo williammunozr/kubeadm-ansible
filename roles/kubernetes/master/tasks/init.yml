@@ -11,7 +11,7 @@
                  --kubernetes-version {{ kube_version }} \
                  --pod-network-cidr {{ pod_network_cidr }} \
                  --token {{ token }} \
-                 --apiserver-advertise-address 192.16.35.12 \
+                 --apiserver-advertise-address {{ apiserver_ip }} \
                  {{ kubeadm_opts }} \
                  {{ init_opts }}
   register: init_cluster
