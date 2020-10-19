@@ -10,6 +10,7 @@ Updated to:
   - kube_version v1.19.0
   - Docker version 19.03.13
   - Calico
+  - MetalLB v0.9.4
   
 Not Tested
 
@@ -22,7 +23,7 @@ Not Tested
 - Hosts IP address in hack/setup-vms.sh (pay attention to change HOST variable on line 40)
 - metallb_address_space variable in roles/metallb/vars/main.yml
 
-If you are testing this environment in your workstation (e.g. by Wi-Fi), guarantee these IP address are in the same network of your network. (ask your network administrator if you are within a company network). With this you can configure your workstation environment to access the cluster, and test Kubernetes services of LoadBalancer type. 
+If you are testing this environment in your workstation (e.g. by Wi-Fi), guarantee these IP address are in the same range of your network. (ask your network administrator if you are within a company network). With this you can configure your workstation environment to access the cluster, and test Kubernetes services of LoadBalancer type. 
 
 ## Resources
 
