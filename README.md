@@ -1,22 +1,50 @@
 # Kubeadm Ansible Playbook
 
+## Changes from the original repository
+
+I need a Kubernetes environment to practice, it must have a LoadBalancer for services similar to GKE or EKS, and it must be also in Ubuntu 18.04 with up-to-date tools.
+
+Updated to:
+
+  - Hashicorp/bionic 18.04
+  - kube_version v1.19.0
+  - Docker version 19.03.13
+  - Calico
+  
+Not Tested
+
+- Centos 7
+- Debian 9
+
+## Configurations to change/adjust
+
+- apiserver_ip variable in group_vars/all.yml
+- Hosts IP address in hack/setup-vms.sh (pay attention to change HOST variable on line 40)
+- metallb_address_space variable in roles/metallb/vars/main.yml
+
+If you are testing this environment in your workstation (e.g. by Wi-Fi), guarantee these IP address are in the same network of your network. (ask your network administrator if you are within a company network). With this you can configure your workstation environment to access the cluster, and test Kubernetes services of LoadBalancer type. 
+
+## Resources
+
+- [Calico](https://docs.projectcalico.org/about/about-calico)
+- [MetalLB](https://metallb.universe.tf/)
+- [Hashicorp/bionic](https://app.vagrantup.com/hashicorp/boxes/bionic64)
+
+## Original Repository and Documentation
+
+- [kairen/kubeadm-ansible](https://github.com/kairen/kubeadm-ansible.git)
+
 Build a Kubernetes cluster using Ansible with kubeadm. The goal is easily install a Kubernetes cluster on machines running:
 
   - Ubuntu 18.04
   - CentOS 7
   - Debian 9
 
-Updated to:
-
-  - kube_version v1.19.0
-  - latest Docker version
-  - Calico
-
 System requirements:
 
   - Deployment environment must have Ansible `2.9.6+`
   - Master and nodes must have passwordless SSH access
-
+  
 # Current Environment
 
 - VirtualBox 6.1.14
