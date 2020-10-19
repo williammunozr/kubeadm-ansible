@@ -6,8 +6,23 @@
     mode: 0755
   tags: metallb
 
+- name: "Install MetalLB - Create Namespace"
+  shell: "kubectl apply -f {{ metallb_namespace_yaml_url }}"
+  tags: metallb
+
 - name: "Install MetalLB"
   shell: "kubectl apply -f {{ metallb_yaml_url }}"
+  tags: metallb
+
+- name: "Execute OpenSSL"
+  command: "openssl rand -base64 128"
+  register: openssl_key
+  tags: metallb
+
+- debug: msg="{{ openssl_key.stdout }}"
+
+- name: "Install MetalLB - Create a Generic"
+  shell: "kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey=\"{{ openssl_key.stdout }}\""
   tags: metallb
 
 - name: "Create configmap file"
