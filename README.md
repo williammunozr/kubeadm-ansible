@@ -17,6 +17,13 @@ Not Tested
 - Centos 7
 - Debian 9
 
+# My Current Environment
+
+- VirtualBox 6.1.14
+- Vagrant 2.2.10
+- Ubuntu 18.04 (hashicorp/bionic64)
+- macOS Catalina 10.15.7, 16 GB RAM
+
 ## Configurations to change/adjust
 
 - apiserver_ip variable in group_vars/all.yml
@@ -43,19 +50,8 @@ Build a Kubernetes cluster using Ansible with kubeadm. The goal is easily instal
 
 System requirements:
 
-  - Deployment environment must have Ansible `2.9.6+`
+  - Deployment environment must have Ansible `2.4.0+`
   - Master and nodes must have passwordless SSH access
-  
-# Current Environment
-
-- VirtualBox 6.1.14
-- Vagrant 2.2.10
-- Ubuntu 18.04 (hashicorp/bionic64)
-- macOS Catalina 10.15.7, 16 GB RAM
-
-# Ubuntu 18.04 (Hashicorp/bionic64)
-
-- [Ubuntu Hashicorp Image](https://app.vagrantup.com/hashicorp/boxes/bionic64)
 
 # Usage
 
