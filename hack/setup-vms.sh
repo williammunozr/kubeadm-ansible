@@ -9,6 +9,7 @@ cat <<EOF > ~/hosts
 127.0.0.1   localhost
 ::1         localhost
 
+192.168.21.117 k8s-nfs-server
 192.168.21.118 k8s-n1
 192.168.21.119 k8s-n2
 192.168.21.120 k8s-m1

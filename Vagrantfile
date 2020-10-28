@@ -18,6 +18,21 @@ def set_vbox(vb, config)
   end
 end
 
+Vagrant.configure("2") do |cf|
+  # NFS Server
+  cf.vm.provider "virtualbox"
+  cf.ssh.shell = "bash -l"
+  cf.vm.define "nfs-server" do |nfs|
+    nfs.vm.hostname = "nfs-server"
+    nfs.vm.network :private_network, ip: "192.168.21.117", auto_config: true
+    nfs.vm.provider "virtualbox" do |vb, override|
+      vb.name = "k8s-nfs-server"
+      set_vbox(vb, override)
+    end
+  end
+  cf.vm.provision :shell, path: "./hack/bootstrap_nfs.sh"
+end
+
 Vagrant.configure("2") do |config|
   config.vm.provider "virtualbox"
   master = 1
