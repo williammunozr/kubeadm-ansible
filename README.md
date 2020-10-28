@@ -11,6 +11,14 @@ Updated to:
   - Docker version 19.03.13
   - Calico
   - MetalLB v0.9.4
+  - NFS Provisioner
+
+# My Testing Environment
+
+- VirtualBox 6.1.14
+- Vagrant 2.2.10
+- Ubuntu 18.04 (hashicorp/bionic64)
+- macOS Catalina 10.15.7, 16 GB RAM
   
 Not Tested
 
@@ -19,12 +27,40 @@ Not Tested
 
 # NFS Server Configuration
 
-# My Current Environment
+Once the Kubernetes Cluster is up and running, we can implement a custom NFS Provisioner. You must need to adjust the following information:
 
-- VirtualBox 6.1.14
-- Vagrant 2.2.10
-- Ubuntu 18.04 (hashicorp/bionic64)
-- macOS Catalina 10.15.7, 16 GB RAM
+In class.yaml:
+
+- provisioner: hachiko.io/nfs
+
+In deployment.yaml:
+
+env:
+  - name: PROVISIONER_NAME
+    value: hachiko.io/nfs
+  - name: NFS_SERVER
+    value: 192.168.21.117
+  - name: NFS_PATH
+    value: /srv/nfs/kubedata
+
+volumes:
+  - name: nfs-client-root
+    nfs:
+      server: 192.168.21.117
+      path: /srv/nfs/kubedata
+
+In default-sc.yaml:
+
+provisioner: hachiko.io/nfs
+
+The IP address `192.168.21.117` correspond to Vagrant nfs-server VM.
+
+After adjusting the above values, execute the following commands to deploy the NFS Provisioner:
+
+- kubectl apply -f nfs-server/rbac.yaml
+- kubectl apply -f nfs-server/class.yaml
+- kubectl apply -f nfs-server/deployment.yaml
+- kubectl apply -f default-sc.yaml
 
 ## Configurations to change/adjust
 
