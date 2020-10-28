@@ -75,6 +75,7 @@ If you are testing this environment in your workstation (e.g. by Wi-Fi), guarant
 - [Calico](https://docs.projectcalico.org/about/about-calico)
 - [MetalLB](https://metallb.universe.tf/)
 - [Hashicorp/bionic](https://app.vagrantup.com/hashicorp/boxes/bionic64)
+- [NFS Server on Ubuntu 18.04](https://www.tecmint.com/install-nfs-server-on-ubuntu/)
 
 # Original Repository and Documentation
 
