@@ -13,19 +13,19 @@ Updated to:
   - MetalLB v0.9.4
   - NFS Provisioner
 
-# Testing Environment
+## Testing Environment
 
 - VirtualBox 6.1.14
 - Vagrant 2.2.10
 - Ubuntu 18.04 (hashicorp/bionic64)
 - macOS Catalina 10.15.7, 16 GB RAM
   
-# Not Tested
+## Not Tested
 
 - Centos 7
 - Debian 9
 
-# NFS Server Configuration
+## NFS Server Configuration
 
 Once the Kubernetes Cluster is up and running, we can implement a custom NFS Provisioner. You must need to adjust the following information:
 
@@ -76,7 +76,7 @@ If you are testing this environment in your workstation (e.g. by Wi-Fi), guarant
 - [MetalLB](https://metallb.universe.tf/)
 - [Hashicorp/bionic](https://app.vagrantup.com/hashicorp/boxes/bionic64)
 
-## Original Repository and Documentation
+# Original Repository and Documentation
 
 - [kairen/kubeadm-ansible](https://github.com/kairen/kubeadm-ansible.git)
 
