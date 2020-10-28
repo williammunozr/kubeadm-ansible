@@ -3,18 +3,22 @@
   k8s:
     state: present
     src: rbac.yaml
+  tags: nfs
 
 - name: Create Storage Class
   k8s:
     state: present
     src: class.yaml
+  tags: nfs
 
 - name: Set the Storage Class as Default
   k8s:
     state: present
     src: default-sc.yaml
+  tags: nfs
 
 - name: Create a Deployment
   k8s:
     state: present
     src: deployment.yaml
+  tags: nfs
