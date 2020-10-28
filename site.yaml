@@ -44,3 +44,10 @@
       run_once: yes
       tags: healthcheck
 
+    - name: "NFS Provisioner Role"
+      include_role:
+        name: nfs
+      when: "additional_features.nfs"
+      run_once: yes
+      tags: nfs
+

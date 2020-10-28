@@ -41,6 +41,7 @@ additional_features:
   helm: false
   metallb: true
   healthcheck: true
+  nfs: true
 
 # temporary directory used by additional features
 tmp_dir: /tmp/kubeadm-ansible-files

@@ -1,0 +1,20 @@
+---
+- name: Create Kubernetes Permissions
+  k8s:
+    state: present
+    src: rbac.yaml
+
+- name: Create Storage Class
+  k8s:
+    state: present
+    src: class.yaml
+
+- name: Set the Storage Class as Default
+  k8s:
+    state: present
+    src: default-sc.yaml
+
+- name: Create a Deployment
+  k8s:
+    state: present
+    src: deployment.yaml
