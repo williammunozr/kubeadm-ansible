@@ -42,6 +42,7 @@ additional_features:
   metallb: true
   healthcheck: true
   nfs: true
+  prometheus: true
 
 # temporary directory used by additional features
 tmp_dir: /tmp/kubeadm-ansible-files

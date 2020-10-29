@@ -1,0 +1,38 @@
+---
+- name: Add Helm APT GPG key
+  when: ansible_os_family == "Debian"
+  apt_key:
+    url: https://baltocdn.com/helm/signing.asc
+    state: present
+  register: gpg_key
+
+- name: Add Helm APT repository
+  when: ansible_os_family == "Debian" and gpg_key is succeeded
+  apt_repository:
+    repo: deb https://baltocdn.com/helm/stable/debian/ all main
+    state: present
+    filename: 'helm'
+  register: helm_repository
+
+- name: Install kubernetes packages (Debian/Ubuntu)
+  when: ansible_os_family == "Debian" and helm_repository is succeeded
+  apt:
+    name: "helm"
+    update_cache: yes
+    state: present
+  register: helm_install
+
+- name: Create Prometheus Namespace
+  when: helm_install is succeeded
+  shell: |
+    kubectl create namespace prometheus
+  register: prometheus_namespace
+
+- name: Install Prometheus Monitoring
+  when: prometheus_namespace is succeeded
+  shell: |
+    helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+    helm repo add stable https://charts.helm.sh/stable
+    helm repo update
+    helm install prometheus prometheus-community/kube-prometheus-stack -n prometheus
+  register: pemetheus_chart

@@ -12,6 +12,7 @@ Updated to:
   - Calico
   - MetalLB v0.9.4
   - NFS Provisioner
+  - Monitoring with Prometheus & Grafana
 
 ## Testing Environment
 
@@ -27,7 +28,7 @@ Updated to:
 
 ## NFS Server Configuration
 
-Once the Kubernetes Cluster is up and running, we can implement a custom NFS Provisioner. You must need to adjust the following information:
+Before running the deployment, we can implement a custom NFS Provisioner. You must need to adjust the following information:
 
 In class.yaml:
 
@@ -55,13 +56,6 @@ provisioner: hachiko.io/nfs
 
 The IP address `192.168.21.117` correspond to Vagrant nfs-server VM.
 
-After adjusting the above values, execute the following commands to deploy the NFS Provisioner:
-
-- kubectl apply -f nfs-server/rbac.yaml
-- kubectl apply -f nfs-server/class.yaml
-- kubectl apply -f nfs-server/deployment.yaml
-- kubectl apply -f default-sc.yaml
-
 ## Configurations to change/adjust
 
 - apiserver_ip variable in group_vars/all.yml
@@ -76,6 +70,7 @@ If you are testing this environment in your workstation (e.g. by Wi-Fi), guarant
 - [MetalLB](https://metallb.universe.tf/)
 - [Hashicorp/bionic](https://app.vagrantup.com/hashicorp/boxes/bionic64)
 - [NFS Server on Ubuntu 18.04](https://www.tecmint.com/install-nfs-server-on-ubuntu/)
+- [Prometheus](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack)
 
 # Original Repository and Documentation
 

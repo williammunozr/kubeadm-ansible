@@ -51,3 +51,10 @@
       run_once: yes
       tags: nfs
 
+    - name: "Install Prometheus Role"
+      include_role:
+        name: prometheus
+      when: "additional_features.prometheus"
+      run_once: yes
+      tags: prometheus
+
