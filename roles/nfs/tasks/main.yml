@@ -2,23 +2,23 @@
 - name: Create Kubernetes Permissions
   k8s:
     state: present
-    src: rbac.yaml
+    src: /vagrant/roles/nfs/files/rbac.yaml
   tags: nfs
 
 - name: Create Storage Class
   k8s:
     state: present
-    src: class.yaml
+    src: /vagrant/roles/nfs/files/class.yaml
   tags: nfs
 
 - name: Set the Storage Class as Default
   k8s:
     state: present
-    src: default-sc.yaml
+    src: /vagrant/roles/nfs/files/default-sc.yaml
   tags: nfs
 
 - name: Create a Deployment
   k8s:
     state: present
-    src: deployment.yaml
+    src: /vagrant/roles/nfs/files/deployment.yaml
   tags: nfs
