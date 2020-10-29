@@ -31,7 +31,9 @@ if [ ${HOST_NAME} == "k8s-m1" ]; then
       export DEBIAN_FRONTEND=noninteractive
       sudo sed -i 's/us.archive.ubuntu.com/tw.archive.ubuntu.com/g' /etc/apt/sources.list
       sudo apt-add-repository -y ppa:ansible/ansible
-      sudo apt-get update && sudo apt-get install -y ansible git sshpass python-netaddr libssl-dev
+      sudo apt-get update && sudo apt-get install -y ansible git sshpass python-netaddr libssl-dev python-pip
+      sudo -H pip install openshift
+      sudo -H pip install kubernetes
     ;;
     *)
       echo "${OS_NAME} is not support ..."; exit 1
@@ -48,7 +50,7 @@ if [ ${HOST_NAME} == "k8s-m1" ]; then
   cd /vagrant
   set_hosts
   sudo cp ~/hosts /etc/
-  sudo ansible-playbook -e network_interface=eth1 site.yaml
+  sudo -H ansible-playbook -e network_interface=eth1 site.yaml
 else
   set_hosts
   sudo cp ~/hosts /etc/
