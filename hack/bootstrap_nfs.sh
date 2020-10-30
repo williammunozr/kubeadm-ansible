@@ -4,10 +4,10 @@
 # Update hosts file
 echo "[TASK 1] Update /etc/hosts file"
 cat >>/etc/hosts<<EOF
-192.168.21.117 k8s-nfs-server
-192.168.21.118 k8s-n1
-192.168.21.119 k8s-n2
-192.168.21.120 k8s-m1
+192.168.0.200 k8s-nfs-server
+192.168.0.201 k8s-n1
+192.168.0.202 k8s-n2
+192.168.0.203 k8s-m1
 EOF
 
 echo "[TASK 2] Download and install NFS server"

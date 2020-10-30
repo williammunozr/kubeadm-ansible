@@ -2,4 +2,4 @@
 metallb_version: v0.9.4
 metallb_namespace_yaml_url: "https://raw.githubusercontent.com/metallb/metallb/{{ metallb_version }}/manifests/namespace.yaml"
 metallb_yaml_url: "https://raw.githubusercontent.com/google/metallb/{{ metallb_version }}/manifests/metallb.yaml"
-metallb_address_space: 192.168.21.200-192.168.21.240
+metallb_address_space: 192.168.0.220-192.168.0.240

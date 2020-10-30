@@ -24,7 +24,8 @@ Vagrant.configure("2") do |cf|
   cf.ssh.shell = "bash -l"
   cf.vm.define "nfs-server" do |nfs|
     nfs.vm.hostname = "nfs-server"
-    nfs.vm.network :private_network, ip: "192.168.21.117", auto_config: true
+    #nfs.vm.network :private_network, ip: "192.168.0.200", auto_config: true
+    nfs.vm.network "public_network", :bridge => "en1: Wi-Fi (Airport)", :ip =>  "192.168.0.200"
     nfs.vm.provider "virtualbox" do |vb, override|
       vb.name = "k8s-nfs-server"
       set_vbox(vb, override)
@@ -40,15 +41,16 @@ Vagrant.configure("2") do |config|
 
   config.ssh.shell = "bash -l"
 
-  private_count = 118
+  private_count = 201
   (1..(master + node)).each do |mid|
     name = (mid <= node) ? "n" : "m"
     id   = (mid <= node) ? mid : (mid - node)
 
     config.vm.define "k8s-#{name}#{id}" do |n|
       n.vm.hostname = "k8s-#{name}#{id}"
-      ip_addr = "192.168.21.#{private_count}"
-      n.vm.network :private_network, ip: "#{ip_addr}",  auto_config: true
+      ip_addr = "192.168.0.#{private_count}"
+      #n.vm.network :private_network, ip: "#{ip_addr}",  auto_config: true
+      n.vm.network "public_network", :bridge => "en1: Wi-Fi (Airport)", :ip =>  "#{ip_addr}"
 
       n.vm.provider :virtualbox do |vb, override|
         vb.name = "#{n.vm.hostname}"

@@ -26,11 +26,11 @@ spec:
             - name: PROVISIONER_NAME
               value: hachiko.io/nfs
             - name: NFS_SERVER
-              value: 192.168.21.117
+              value: 192.168.0.200
             - name: NFS_PATH
               value: /srv/nfs/kubedata
       volumes:
         - name: nfs-client-root
           nfs:
-            server: 192.168.21.117
+            server: 192.168.0.200
             path: /srv/nfs/kubedata
